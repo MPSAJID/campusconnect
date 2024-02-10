@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Authorization</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #3494e6, #ec6ead);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            box-sizing: border-box;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: calc(100% - 20px);
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: #ff0000;
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        h2 {
+            color: #e11414;
+        }
+
+        #login-container {
+            display: none;
+        }
+
+        #register-button {
+            background-color: #02220a;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>User Authorization</h1>
+    </header>
+
+    <div class="container" id="register-container">
+        <h2>Sign Up</h2>
+        <div id="register-error" class="error"></div>
+        <input type="text" id="register-username" placeholder="Username">
+        <input type="email" id="register-email" placeholder="Email">
+        <input type="password" id="register-password" placeholder="Password">
+        <input type="password" id="register-confirm-password" placeholder="Confirm Password">
+        <button onclick="register()">Sign Up</button>
+        <button id="register-button" onclick="showLogin()">Login</button>
+    </div>
+
+    <div class="container" id="login-container">
+        <h2>Login</h2>
+        <div id="login-error" class="error"></div>
+        <input type="text" id="login-username" placeholder="Username or Email">
+        <input type="password" id="login-password" placeholder="Password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <script>
+        const isUserRegistered = localStorage.getItem('isUserRegistered');
+
+        if (isUserRegistered) {
+            document.getElementById('register-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+        }
+
+        function register() {
+            const username = document.getElementById('register-username').value.trim();
+            const email = document.getElementById('register-email').value.trim();
+            const password = document.getElementById('register-password').value.trim();
+            const confirmPassword = document.getElementById('register-confirm-password').value.trim();
+
+            if (!username || !email || !password || !confirmPassword) {
+                document.getElementById('register-error').innerText = 'All fields are required.';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                document.getElementById('register-error').innerText = 'Passwords do not match.';
+                return;
+            }
+
+            localStorage.setItem('isUserRegistered', true);
+
+            document.getElementById('register-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+
+            alert(`Registered:\nUsername: ${username}\nEmail: ${email}`);
+        }
+
+        function showLogin() {
+            document.getElementById('register-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+        }
+
+        function login() {
+            const usernameOrEmail = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value.trim();
+
+            if (!usernameOrEmail || !password) {
+                document.getElementById('login-error').innerText = 'Username or Email and Password are required.';
+                return;
+            }
+
+            alert(`Logged in:\nUsername or Email: ${usernameOrEmail}`);
+        }
+    </script>
+
+</body>
+</html>
+
