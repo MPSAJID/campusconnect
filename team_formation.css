@@ -3,7 +3,7 @@
         padding: 0;
     }
     .image{
-    background-image:url(/images/plane.JPEG) ;
+    background-image:url(plane.JPEG) ;
     height: 100vh;
     background-position: center;
     }

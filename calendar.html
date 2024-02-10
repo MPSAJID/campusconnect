@@ -1,0 +1,49 @@
+<html>
+    <head>calendar</head>
+    <body>
+        
+    <script src="https://apis.google.com/js/api.js"></script>
+<div id="calendar"></div>
+<script>
+    gapi.load('client:auth2', initClient);
+  
+    function initClient() {
+      gapi.client.init({
+        
+        discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
+        scope: 'https://www.googleapis.com/auth/calendar.readonly'
+      }).then(function() {
+        // Once the client is initialized, load the calendar
+        loadCalendar();
+      });
+    }
+  
+    function loadCalendar() {
+      gapi.client.calendar.events.list({
+        'calendarId': 'primary', // 'primary' is the default calendar
+        'timeMin': (new Date()).toISOString(),
+        'showDeleted': false,
+        'singleEvents': true,
+        'maxResults': 10,
+        'orderBy': 'startTime'
+      }).then(function(response) {
+        var events = response.result.items;
+        var calendarElement = document.getElementById('calendar');
+  
+        if (events.length > 0) {
+          for (var i = 0; i < events.length; i++) {
+            var event = events[i];
+            var when = event.start.dateTime;
+            if (!when) {
+              when = event.start.date;
+            }
+            calendarElement.innerHTML += '<div>' + event.summary + ' (' + when + ')</div>';
+          }
+        } else {
+          calendarElement.innerHTML = 'No upcoming events found.';
+        }
+      });
+    }
+    </script>
+    </body>
+  </html>

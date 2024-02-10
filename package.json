@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "fullcalendar": "^6.1.10",
+    "mongoose": "^8.1.1",
+    "nodejs": "^0.0.0"
+  },
+  "name": "campusconnect",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
