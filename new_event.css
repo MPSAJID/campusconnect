@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.image{
+background-image:url(/images/plane2.JPEG) ;
+height: 100vh;
+background-position: center;
+}
+nav {
+    height: 12vh;
+    width: 100vw;
+    background-color: rgb(30, 118, 173);
+}
+
+.head {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+    padding: 7px;
+    text-shadow: 4px 4px 5px silver;
+    color: rgb(232, 225, 215);
+}
+
+.container {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 
+    sans-serif;
+    font-weight: bold;
+    color: rgb(21, 45, 180);
+    font-size: 50px;
+    margin-left: 5vw;
+    font-size: 30px;
+}
+.submit{
+    margin-left: 6vw;
+}

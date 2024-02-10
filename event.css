@@ -1,0 +1,70 @@
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .img{
+            background-image:url(/images/plane2.JPEG) ;
+            height: 100vh;
+            background-position: center;
+        }
+       .navigation{
+        height: 12vh;
+        width: 100vw;
+        background-color: rgb(30, 118, 173);
+        display: flex;
+       }
+       .events{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: rgb(155, 211, 57);
+        text-shadow: 3px 6px 7px red;
+        font-size: 30px;
+        margin-left: 3vw;
+        margin-top: 10px;
+       }
+       .calender{
+        color: azure;
+        font-weight: bold;
+        text-shadow: 4px 4px 7px azure;
+        font-size: 30px;
+        margin-left: 55vw;
+        margin-top: 13px;
+       }
+       .information{
+        margin-top: 7vh;
+        padding-left:3vw ;
+        display: flex;
+        text-decoration-line: underline;
+       }
+       .post{
+        margin-top: 4vh;
+        background-color: aquamarine;
+        border-radius: 30%;
+        height: 6vh;
+        margin-left: 35vw;
+        font-size: 30px;
+        font-style: oblique;
+        text-shadow: 4px 6px 5px rgb(41, 127, 224);
+       }
+       .post:hover{
+        background-color: rgb(34, 172, 129);
+        color: rgb(208, 214, 218);
+       }
+       .ongoing{
+        margin-top: 10vh;
+        font-size: 25px; 
+        font-style:italic;
+        text-shadow: 3px 5px 5px rgb(84, 81, 81);
+       }
+       Table,th,td,tr{
+        font-size: 20px;
+        padding: 5px;
+        text-align: center;
+        border-collapse: collapse;
+        margin-top: 3vh;
+        width: 89vw;
+        border: 3px solid rgb(55, 2, 88);
+       }
+       table{
+        margin-left: 3vw;
+       }
