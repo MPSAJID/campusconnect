@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 600px;
+            margin: 2em auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>User Profile Page</h1>
+    </header>
+
+    <section>
+        <img src="user-avatar.jpg" alt="User Avatar">
+        <h2 id="user-name">user-name</h2>
+        <p id="user-email">Email: user-email@example.com</p>
+        <p><a href="#" onclick="viewParticipatedEvents()">Participated Events</a></p>
+        <p><a href="#" onclick="viewUpcomingEvents()">Upcoming Registered Events</a></p>
+        <p id="won-events"></p>
+        <button onclick="editProfile()">Edit Profile</button>
+    </section>
+    
+    
+    
+
+    <script>
+        function getUserProfile() {
+            return {
+                name: "user-name",
+                email: "user-email@example.com",
+                wonEvents: ["Event A", "Event C"]
+            };
+        }
+        function editProfile() {
+            // Replace this example logic with your actual implementation
+            var newName = prompt("Enter your new name:");
+            var newEmail = prompt("Enter your new email:");
+    
+            // Update the profile information on the page
+            if (newName !== null && newEmail !== null) {
+                document.getElementById('user-name').innerText = newName;
+                document.getElementById('user-email').innerText = newEmail;
+            }
+        }
+        window.onload = function () {
+            const userProfile = getUserProfile();
+            document.getElementById('user-name').innerText = userProfile.name;
+            document.getElementById('user-email').innerText = `Email: ${userProfile.email}`;
+            
+            const wonEventsElement = document.getElementById('won-events');
+            if (userProfile.wonEvents.length > 0) {
+                wonEventsElement.innerHTML = `<strong>Won Events:</strong> `;
+                userProfile.wonEvents.forEach((event, index) => {
+                    wonEventsElement.innerHTML += `<a href="#" onclick="viewEventDetails(${index})">${event}</a>`;
+                    if (index < userProfile.wonEvents.length - 1) {
+                        wonEventsElement.innerHTML += ', ';
+                    }
+                });
+            } else {
+                wonEventsElement.innerText = "No events won yet.";
+            }
+        };
+        function viewParticipatedEvents() {
+        alert("List of Participated Events:\n1. Event A\n2. Event B");
+    }
+
+    function viewUpcomingEvents() {
+        alert("List of Upcoming Registered Events:\n1. Event X\n2. Event Y");
+    }
+
+    </script>
+    <link rel="stylesheet" href="profile.css">
+    
+
+</body>
+</html>
